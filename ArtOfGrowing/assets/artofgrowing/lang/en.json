@@ -616,7 +616,7 @@
   "artofgrowing:block-handbooktext-pumpkinfruit": "To cut into slices, place the mature pumpkin on the ground and press it for a few seconds with a knife or cleaver in your hands. You will receive pumpkin slices and pumpkin seeds. The amount per slice depends on the size of the pumpkin.",
   "artofgrowing:blockhelp-pumpkin-harvest": "Cut the pumpkin",
 
-  "item-*-seeds-pumpkin": "Pumpkin seeds",
+  "item-seeds-*-pumpkin": "Pumpkin seeds",
   "game:item-grain-pumpkin": "Pumpkin grain",
   "game:item-dough-pumpkin": "Pumpkin dough",
   "game:item-flour-pumpkin": "Pumpkin flour",
