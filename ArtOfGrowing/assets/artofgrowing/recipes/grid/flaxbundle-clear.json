@@ -34,7 +34,7 @@
     "ingredients": {
       "W": {
         "type": "block",
-        "code": "game:bowl-fired"
+        "code": "game:bowl-{color}-fired"
       },
       "F": {
         "type": "item",
