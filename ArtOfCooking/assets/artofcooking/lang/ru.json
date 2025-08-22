@@ -90,7 +90,7 @@
   "artofcooking:blockdesc-copperbowl-*": "Больше нельзя использовать. Если у вас осталась такая миска, вы можете разобрать её в сетке крафта.",
 
   "artofcooking:block-handbooktitle-metalpot": "Использование",
-  "artofcooking:block-handbooktext-metalpot": "Смотрите <a href=\"handbook:\/\/craftinginfo-mealcooking\">руководство по приготовлению пищи<\/a>. Вы не можете есть непосредственно из кастрюли, для этого понадобится <a href=\"handbook:\/\/block-bowl-fired\">миска<\/a>. Если вы хотите опустошить миску или кастрюлю, не съедая содержимого, просто бросьте их в воду!",
+  "artofcooking:block-handbooktext-metalpot": "Смотрите <a href=\"handbook:\/\/craftinginfo-mealcooking\">руководство по приготовлению пищи<\/a>. Вы не можете есть непосредственно из кастрюли, для этого понадобится <a href=\"handbook:\/\/block-bowl-*-fired\">миска<\/a>. Если вы хотите опустошить миску или кастрюлю, не съедая содержимого, просто бросьте их в воду!",
   "artofcooking:block-handbooktext-dirtymetalpot": "Кастрюля, используемая для приготовления <a href=\"handbook:\/\/item-glueportion-pitch-hot\">клея<\/a> или других непищевых рецептов, становится покрыта остатками. Покрытая остатками кастрюля не может быть использована для приготовления пищи, но она вполне пригодится для других целей. Медную кастрюлю можно отмыть, замочив в уксусе на сутки.",
 
   "artofcooking:block-handbooktitle-metalbowl": "Применение",

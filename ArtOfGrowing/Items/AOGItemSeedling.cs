@@ -68,7 +68,7 @@ namespace ArtOfGrowing.Items
                             IPlayer byPlayer = null;
                             if (byEntity is EntityPlayer) byPlayer = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
 
-                            bool planted = ((BlockEntityFarmland)be).TryPlant(cropBlock);
+                            bool planted = ((BlockEntityFarmland)be).TryPlant(cropBlock, itemslot, byEntity, blockSel);
                             if (planted)
                             {
                                 byEntity.World.PlaySoundAt(new AssetLocation("sounds/block/plant"), pos.X, pos.Y, pos.Z, byPlayer);
