@@ -31,7 +31,7 @@ namespace ArtOfGrowing.BlockBehaviors
             vineGrowthQuantityGen = properties["vineGrowthQuantity"].AsObject<NatFloat>();
             vineBlockLocation = new AssetLocation("pumpkin-vine-" + size + "-1-normal");
         }
-        public override void OnPlanted(ICoreAPI api)
+        public override void OnPlanted(ICoreAPI api, ItemSlot itemslot, EntityAgent byEntity, BlockSelection blockSel)
         {
             vineGrowthQuantity = vineGrowthQuantityGen.nextFloat(1, api.World.Rand);
         }
