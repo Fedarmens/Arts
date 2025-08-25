@@ -1,16 +1,10 @@
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
-using Vintagestory.API.Datastructures;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
-using Vintagestory.API.Util;
 using Vintagestory.GameContent;
-using Vintagestory.API.Common.Entities;
-using System.Drawing;
 
 namespace ArtOfGrowing.Items
 {

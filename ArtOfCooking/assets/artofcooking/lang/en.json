@@ -89,7 +89,7 @@
   "artofcooking:blockdesc-copperbowl-*": "It can no longer be used. If you still have such a bowl, you can disassemble it in the crafting grid.",
 
   "artofcooking:block-handbooktitle-metalpot": "Use",
-  "artofcooking:block-handbooktext-metalpot": "See <a href=\"handbook://craftinginfo-mealcooking\">Meal making guide</a>. You cannot eat from a cooking pot directly, you will need a <a href=\"handbook://block-bowl-fired\">bowl</a>. If you want to empty a bowl or cooking pot without eating the contents, simply toss it in some water!",
+  "artofcooking:block-handbooktext-metalpot": "See <a href=\"handbook://craftinginfo-mealcooking\">Meal making guide</a>. You cannot eat from a cooking pot directly, you will need a <a href=\"handbook://block-bowl-*-fired\">bowl</a>. If you want to empty a bowl or cooking pot without eating the contents, simply toss it in some water!",
   "artofcooking:block-handbooktext-dirtymetalpot": "A cooking pot used to cook up <a href=\"handbook://item-glueportion-pitch-hot\">glue</a> or other non-food recipes becomes caked in residue. A residue-covered cooking pot cannot be used for meal-making with food ingredients, but is still quite handy for other purposes. A copper pot can be washed by soaking in vinegar for a day.",
 
   "artofcooking:block-handbooktitle-metalbowl": "Use",
