@@ -71,14 +71,21 @@ namespace CoreOfArts.CollectibleBehaviors
             var pos = blockSel?.Position;
             int sourceStackSize = slot.StackSize / recipe.SourceSize;
             int coef = 1;
-            ItemStack inputStack = new ItemStack(byEntity.World.GetItem(new AssetLocation(recipe.InputStack.Code)), 99999);
+            Item inputItem = byEntity.World.GetItem(new AssetLocation(recipe.InputStack.Code));
+            if (inputItem == null) return false;
+            ItemStack inputStack = new ItemStack(inputItem, 99999);
+
             ItemStack outputLiquid = null;
             bool isLiquid = false;
 
             if (recipe.OutputLiquid != null)
             {
-                outputLiquid = new ItemStack(byEntity.World.GetItem(new AssetLocation(recipe.OutputLiquid?.Code)), 99999);
-                isLiquid = outputLiquid?.Collectible?.Attributes?["waterTightContainerProps"].Exists == true;
+                Item liquidItem = byEntity.World.GetItem(new AssetLocation(recipe.OutputLiquid?.Code));
+                if (liquidItem != null)
+                {
+                    outputLiquid = new ItemStack(liquidItem, 99999);
+                    isLiquid = outputLiquid.Collectible.Attributes?["waterTightContainerProps"].Exists == true;
+                }
             }
 
             if (recipe.OutputStacks == null && outputLiquid == null || inputStack == null) return false;
@@ -206,14 +213,21 @@ namespace CoreOfArts.CollectibleBehaviors
                 if (ActiveRecipe.MixingTime != 0 && secondsUsed < ActiveRecipe.MixingTime - 0.1f) return;
 
                 Block block = byEntity.World.BlockAccessor.GetBlock(blockSel?.Position);
-                ItemStack inputStack = new ItemStack(byEntity.World.GetItem(new AssetLocation(ActiveRecipe.InputStack.Code)), 99999); 
+                Item inputItem = byEntity.World.GetItem(new AssetLocation(ActiveRecipe.InputStack.Code));
+                if (inputItem == null) return;
+                ItemStack inputStack = new ItemStack(inputItem, 99999);
+
                 ItemStack outputLiquid = null;
                 bool isLiquid = false;
 
                 if (ActiveRecipe.OutputLiquid != null)
                 {
-                    outputLiquid = new ItemStack(byEntity.World.GetItem(new AssetLocation(ActiveRecipe.OutputLiquid?.Code)), 99999);
-                    isLiquid = outputLiquid?.Collectible?.Attributes?["waterTightContainerProps"].Exists == true;
+                    Item liquidItem = byEntity.World.GetItem(new AssetLocation(ActiveRecipe.OutputLiquid?.Code));
+                    if (liquidItem != null)
+                    {
+                        outputLiquid = new ItemStack(liquidItem, 99999);
+                        isLiquid = outputLiquid.Collectible.Attributes?["waterTightContainerProps"].Exists == true;
+                    }
                 }
 
                 IPlayer byPlayer = (byEntity as EntityPlayer)?.Player;
@@ -305,18 +319,19 @@ namespace CoreOfArts.CollectibleBehaviors
                 {
                     foreach (var stack in ActiveRecipe.OutputStacks)
                     {
-                        ItemStack outputStack = new ItemStack(byEntity.World.GetItem(new AssetLocation(stack.Code)), stack.StackSize);
-                        if (outputStack == null) outputStack = new ItemStack(byEntity.World.GetBlock(new AssetLocation(stack.Code)), stack.StackSize);
-                        
-                        if (outputStack != null)
+                        CollectibleObject collobj = byEntity.World.GetItem(new AssetLocation(stack.Code));
+                        if (collobj == null) collobj = byEntity.World.GetBlock(new AssetLocation(stack.Code));
+
+                        if (collobj != null)
                         {
+                            ItemStack outputStack = new ItemStack(collobj, stack.StackSize);
                             outputStack.StackSize *= coef;
                             if (byEntity is EntityPlayer) byPlayer = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
                             if (byPlayer?.InventoryManager.TryGiveItemstack(outputStack) == false)
                             {
                                 byEntity.World.SpawnItemEntity(outputStack, byEntity.SidedPos.XYZ);
                             }
-                        }                        
+                        }
                     }
                 }
 

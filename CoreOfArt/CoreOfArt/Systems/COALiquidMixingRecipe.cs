@@ -82,6 +82,7 @@ namespace CoreOfArts.Systems
             IPlayer byPlayer = (byEntity as EntityPlayer)?.Player;
             
             ItemStack sourceStack = baseBlock.GetContent(itemslot.Itemstack);
+            if (blockSel == null) return false;
             Block block = byEntity.World.BlockAccessor.GetBlock(blockSel.Position);
             
             if (recipe != null)

@@ -158,11 +158,18 @@ namespace CoreOfArts.Systems
                     {
                         if (rec != null)
                         {
-                            ItemStack sourceStack = new ItemStack(capi.World.GetItem(new AssetLocation(rec.InitialCode)));
-                            if (sourceStack == null) sourceStack = new ItemStack(capi.World.GetBlock(new AssetLocation(rec.InitialCode)));
-                            sourceStack.StackSize = rec.SourceSize;
+                            CollectibleObject sourceColl = capi.World.GetItem(new AssetLocation(rec.InitialCode));
+                            if (sourceColl == null) sourceColl = capi.World.GetBlock(new AssetLocation(rec.InitialCode));
+                            if (sourceColl == null) continue;
+                            ItemStack sourceStack = new ItemStack(sourceColl)
+                            {
+                                StackSize = rec.SourceSize
+                            };
 
-                            ItemStack inputStack = new ItemStack(capi.World.GetItem(new AssetLocation(rec.InputStack.Code)));
+                            Item inputItem = capi.World.GetItem(new AssetLocation(rec.InputStack.Code));
+                            if (inputItem == null) continue;
+                            ItemStack inputStack = new ItemStack(inputItem);
+
                             if (inputStack.Collectible.Attributes?["waterTightContainerProps"].Exists == true)
                             {
                                 var props = BlockLiquidContainerBase.GetContainableProps(inputStack);
@@ -195,9 +202,10 @@ namespace CoreOfArts.Systems
 
                             if (rec.OutputLiquid != null)
                             {
-                                ItemStack outputLiquid = new ItemStack(capi.World.GetItem(new AssetLocation(rec.OutputLiquid.Code)));
-                                if (outputLiquid != null)
+                                Item liquidItem = capi.World.GetItem(new AssetLocation(rec.OutputLiquid.Code));
+                                if (liquidItem != null)
                                 {
+                                    ItemStack outputLiquid = new ItemStack(liquidItem);
                                     if (outputLiquid.Collectible.Attributes?["waterTightContainerProps"].Exists == true)
                                     {
                                         var props = BlockLiquidContainerBase.GetContainableProps(outputLiquid);
@@ -220,8 +228,12 @@ namespace CoreOfArts.Systems
                             {
                                 foreach (var output in rec.OutputStacks)
                                 {
-                                    ItemStack outputStack = new ItemStack(capi.World.GetItem(new AssetLocation(output.Code)));
-                                    outputStack.StackSize = output.StackSize;
+                                    Item outputItem = capi.World.GetItem(new AssetLocation(output.Code));
+                                    if (outputItem == null) continue;
+                                    ItemStack outputStack = new ItemStack(outputItem)
+                                    {
+                                        StackSize = output.StackSize
+                                    };
 
                                     var ocomp = new ItemstackTextComponent(capi, outputStack, 40, 0, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)));
                                     ocomp.PaddingLeft = 0;
@@ -296,7 +308,6 @@ namespace CoreOfArts.Systems
                                             if (outputBlock != null) outputStack = new ItemStack(outputBlock);
                                         }
 
-                                        if (outputStack == null) outputStack = new ItemStack(capi.World.GetBlock(new AssetLocation(output.Code)));
 
                                         if (outputStack != null && !recipestacks.Any(s => s.Equals(capi.World, outputStack, GlobalConstants.IgnoredStackAttributes)))
                                         {
