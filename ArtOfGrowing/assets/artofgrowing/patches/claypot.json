@@ -1,7 +1,7 @@
 [
   {
     "op": "addmerge",
-    "path": "/attributesByType/claypot-cooked/textureMapping",
+    "path": "/attributesByType/claypot-blue-cooked/textureMapping",
     "value": {
       "vegetable-scallions": [ "vegetable", "scallions" ],
 
@@ -103,16 +103,16 @@
       "seeds-gigantic-peanut": [ "vegetable", "group12" ],
       "pickledlegume-gigantic-soybean": [ "vegetable", "group9" ]
     },
-    "file": "game:blocktypes/clay/pot.json",
+    "file": "game:blocktypes/clay/fired/pot.json",
     "side": "Server"
   },
   {
     "op": "addmerge",
-    "path": "/texturesByType/*/scallions",
+    "path": "/textures/scallions",
     "value": {
       "base": "block/wood/barrel/raw-scallions"
     },
-    "file": "game:blocktypes/clay/pot.json",
+    "file": "game:blocktypes/clay/fired/pot.json",
     "side": "Server"
   }
 ]

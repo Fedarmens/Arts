@@ -78,6 +78,44 @@
     },
     {
         "op": "addmerge",
+        "path": "/behaviors/-",
+        "value": {
+            "name": "COAInLiquidMixing",
+            "properties": {
+                "mixingType": "doughkneading",
+                "inLiquidMixingList": [
+                    {
+                        "initialCode": "game:flour-{type}",
+                        "sourceSize": 1,
+                        "inputLitres": 1,
+                        "inputStack": {
+                            "type": "item",
+                            "code": "butchering:bloodportion"
+                        },
+                        "outputStacks": [
+                            {
+                                "type": "item",
+                                "code": "artofcooking:doughpiece-blooddough-{type}",
+                                "stackSize": 8
+                            }
+                        ],
+                        "needExactLitres": true,
+                        "canBulk": true,
+                        "mixingTime": 2.5,
+                        "animation": "squeezehoneycomb",
+                        "sound": "sounds/player/squeezehoneycomb"
+                    }
+                ]
+            }
+        },
+        "file": "game:itemtypes/food/flour.json",
+        "dependsOn": [
+          { "modid": "butchering" }
+        ],
+        "side": "Server"
+    },
+    {
+        "op": "addmerge",
         "path": "/attributes/handbook",
         "value": {
             "extraSections": [
